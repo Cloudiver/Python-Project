@@ -1,0 +1,2 @@
+- 通过 `twilio` 发短信给验证过的手机(手机号必须通过验证)
+- 需要安装 `twilio` 库, https://www.twilio.com/docs/python/install
