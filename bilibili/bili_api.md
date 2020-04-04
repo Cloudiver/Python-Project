@@ -75,3 +75,12 @@ http://bangumi.bilibili.com/sponsor/web_api/v2/rank/total?season_id=6339&season_
 
 
 
+直播间源地址：
+
+https://api.live.bilibili.com/xlive/web-room/v1/playUrl/playUrl?cid=3417605&qn=10000&platform=web
+
+https://api.live.bilibili.com/room/v1/Room/playUrl?cid=3417605&quality=10000&platform=web
+
+这里的cid是房间id, qn是清晰度
+
+http://api.live.bilibili.com/room/v1/RoomStatic/get_room_static_info?room_id=92613    直播间信息：可以看到当前是否开播
