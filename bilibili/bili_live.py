@@ -13,7 +13,7 @@ app打开通知设置会推送其他无关内容, 且该程序可以检测直播
 session = requests.session()
 header = {
     "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36",
-    "cookie": "SESSDATA=你的data值"
+    "cookie": "SESSDATA=你的data值"  # 默认半年有效期(在此期间，退出登录账号则此cookie失效，需要换上新的cookie)
 }
 
 
