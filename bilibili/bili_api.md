@@ -11,6 +11,10 @@ https://api.bilibili.com/x/player/pagelist?bvid=BV1c7411U7bh
 或者通过aid获取cid:
 https://api.bilibili.com/x/player/pagelist?aid=81909793
 
+视频合集：
+
+https://api.bilibili.com/x/player/pagelist?bvid=BV17x411Q79b
+
 获取视频下载链接:
 https://api.bilibili.com/x/player/playurl?cid=168087953&bvid=BV1FE411c7co&qn=80
 另一个真实链接:
@@ -73,7 +77,11 @@ https://api.bilibili.com/pgc/web/season/section?season_id=29350
 番剧承包排行榜:
 http://bangumi.bilibili.com/sponsor/web_api/v2/rank/total?season_id=6339&season_type=1&page=1&pagesize=50
 
+up所有投稿视频：
 
+https://api.bilibili.com/x/space/arc/search?mid=6887741&ps=30&pn=1&order=pubdate
+
+ps是每页数量， pn是页码，order是排序方式（按投稿时间）
 
 直播间源地址：
 
