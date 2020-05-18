@@ -62,15 +62,20 @@ class Connect(object):
                         seasons = ele.get('seasons')
                         if len(seasons) != 0:
                             for season in seasons:
-                                bangbumi_title = season['title']
-                                favorites = str(season['favorites'])  # 追番人数
-                                pub_index = season['pub_index']   # 更新集数
-                                pub_time = season['pub_time']   # 更新时间
-                                content += '番剧: ' + bangbumi_title + '\n' \
-                                           '追番人数: ' + favorites + '\n' \
-                                           '更新: ' + pub_index + '\n' \
-                                           '更新时间: ' + pub_time + '\n\n'
-                            return '今天更新\n' + content.strip()
+                                if season.get('delay') == 0:   # 没有延期
+                                    bangbumi_title = season['title']
+                                    favorites = str(season['favorites'])  # 追番人数
+                                    pub_index = season.get('pub_index')   # 更新集数
+                                    pub_time = season['pub_time']   # 更新时间
+                                    is_published = season.get('is_published')   # 查询时是否已经更新
+                                    published = ''
+                                    if is_published == 1:
+                                        published = '(已更新)'
+                                    content += '番剧: ' + bangbumi_title + '\n' \
+                                               '追番人数: ' + favorites + '\n' \
+                                               '更新: ' + pub_index + published + '\n' \
+                                               '更新时间: ' + pub_time + '\n\n'
+                            return '今日更新\n' + content.strip()
                         else:
                             return '今天没有番剧更新'
             except:
@@ -94,7 +99,7 @@ class Connect(object):
                     up = data['data']['uname']
                     title = '标题: ' + data['data']['title']
                     if data['data']['live_status'] == 1:
-                        online = '人气: ' + str(data['data']['online']) + '\n'
+                        online = '人气: ' + str(data['data']['online'])
                         msg = 'up: ' + up + '\n' + title + '\n' + online
                         # resp = requests.get('https://api.live.bilibili.com/xlive/web-room/v1/playUrl/playUrl?cid=' + roomid + '&qn=10000&platform=web', headers=header)
                         # if resp.status_code == 200:
@@ -125,13 +130,21 @@ class Connect(object):
             elif content == 'anime':
                 text = Connect().bangumi()
                 reply = TextReply(content=text, message=msg)
+            elif content == '迅雷':
+                text = 'Safari打开:\nhttps://ithunder-ota.a.88cdn.com/download-guide/step1.html?from=gzhlm'
+                reply = TextReply(content=text, message=msg)
+            elif content == '哔咔':
+                text = '浏览器打开:\nhttps://download2.picacomiccn.xyz'
+                reply = TextReply(content=text, message=msg)
             else:
                 reply = TextReply(content=content, message=msg)
         elif msg.type == 'event' and msg.event == 'subscribe':
-            help = "谢谢关注\n\n" \
-                   "1. 在对话框输入'一言', 可以看到一句台词\n\n" \
-                   "2. 输入'anime', 查看今天更新的番剧\n\n" \
-                   "3. 输入b站直播房间号, 如'1017', 可以查看当前主播是否在线"
+            help = "谢谢关注!\n\n" \
+                   "1. 在对话框输入'哔咔', 获取哔咔下载地址\n\n" \
+                   "2. 输入'迅雷', 获取iOS版迅雷下载地址\n\n" \
+                   "3. 输入'一言', 可以看到一句台词\n\n" \
+                   "4. 输入'anime', 查看今天更新的番剧\n\n" \
+                   "5. 输入b站直播房间号, 如'1017', 可以查看当前主播是否在线"
             reply = TextReply(content=help, message=msg)
         else:
             reply = TextReply(content="只支持文字消息", message=msg)
@@ -143,4 +156,3 @@ class Connect(object):
 app = falcon.API()
 connect = Connect()
 app.add_route('/connect', connect)
-
