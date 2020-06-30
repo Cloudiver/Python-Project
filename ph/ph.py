@@ -7,7 +7,7 @@ import sys
 
 s = requests.session()
 
-proxy = '127.0.0.1:1080'
+proxy = '127.0.0.1:10808'
 proxies = {
     'http': 'http://' + proxy,
     'https': 'https://' + proxy
@@ -18,12 +18,12 @@ headers = {
 }
 
 # 接收参数
-url = str((sys.argv)[1])
+# url = str((sys.argv)[1])
 
 
-# url = 'https://cn.pornhub.com/view_video.php?viewkey=ph5d892c1c78551'
+url = 'https://cn.pornhub.com/view_video.php?viewkey=ph5ee5837fe02aa'
 
-r = s.get(url, headers=headers, proxies=proxies)
+r = s.get(url, headers=headers)
 htmlContent = r.content
 htmlContent = etree.HTML(htmlContent)
 
