@@ -14,6 +14,9 @@ from wechatpy.replies import TextReply
 被动回复消息: https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Passive_user_reply_message.html#0
 代码: https://segmentfault.com/a/1190000015271082
 
+所用到包：http://docs.wechatpy.org/zh_CN/stable/install.html
+github源码：https://github.com/wechatpy/wechatpy
+
 waitress-serve --port=80 autosend:app 启动
 """
 class Connect(object):
@@ -137,7 +140,7 @@ class Connect(object):
                 text = '浏览器打开(包括iOS和Android):\nhttps://download2.picacomiccn.xyz'
                 reply = TextReply(content=text, message=msg)
             else:
-                return ''   # 对其他文本不作回复
+                return ''   # 对其他文本不作回复 https://github.com/wechatpy/wechatpy/issues/161
         elif msg.type == 'event' and msg.event == 'subscribe':
             help = "谢谢关注!\n\n" \
                    "1. 在对话框输入'哔咔', 获取哔咔下载地址\n\n" \
