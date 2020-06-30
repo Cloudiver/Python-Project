@@ -18,10 +18,10 @@ headers = {
 }
 
 # 接收参数
-# url = str((sys.argv)[1])
+url = str((sys.argv)[1])
 
 
-url = 'https://cn.pornhub.com/view_video.php?viewkey=ph5ee5837fe02aa'
+# url = 'https://cn.pornhub.com/view_video.php?viewkey=ph5d892c1c78551'
 
 r = s.get(url, headers=headers)
 htmlContent = r.content
