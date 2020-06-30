@@ -131,17 +131,17 @@ class Connect(object):
                 text = Connect().bangumi()
                 reply = TextReply(content=text, message=msg)
             elif content == '迅雷':
-                text = 'Safari打开:\nhttps://ithunder-ota.a.88cdn.com/download-guide/step1.html?from=gzhlm'
+                text = 'Android:\nhttp://suo.im/5WbiD4\niOS(用自带Safari打开):\nhttps://ithunder-ota.a.88cdn.com/download-guide/step1.html?from=gzhlm'
                 reply = TextReply(content=text, message=msg)
             elif content == '哔咔':
-                text = '浏览器打开:\nhttps://download2.picacomiccn.xyz'
+                text = '浏览器打开(包括iOS和Android):\nhttps://download2.picacomiccn.xyz'
                 reply = TextReply(content=text, message=msg)
             else:
-                reply = TextReply(content=content, message=msg)
+                return ''   # 对其他文本不作回复
         elif msg.type == 'event' and msg.event == 'subscribe':
             help = "谢谢关注!\n\n" \
                    "1. 在对话框输入'哔咔', 获取哔咔下载地址\n\n" \
-                   "2. 输入'迅雷', 获取iOS版迅雷下载地址\n\n" \
+                   "2. 输入'迅雷', 获取迅雷下载地址\n\n" \
                    "3. 输入'一言', 可以看到一句台词\n\n" \
                    "4. 输入'anime', 查看今天更新的番剧\n\n" \
                    "5. 输入b站直播房间号, 如'1017', 可以查看当前主播是否在线"
@@ -149,7 +149,7 @@ class Connect(object):
         else:
             reply = TextReply(content="只支持文字消息", message=msg)
         xml = reply.render()
-        resp.body = (xml)
+        resp.body = xml
         resp.status = falcon.HTTP_200
 
 
