@@ -98,7 +98,7 @@ class Connect(object):
         if resp.status_code == 200:
             try:
                 data = resp.json()
-                if data['code'] == 0:
+                if data['code'] == 0 and data['data']:
                     up = data['data']['uname']
                     title = '标题: ' + data['data']['title']
                     if data['data']['live_status'] == 1:
@@ -113,7 +113,7 @@ class Connect(object):
                     else:
                         return up + '没有开播'
                 else:
-                    return '喵帕斯休息了'
+                    return '该直播间不存在'
             except:
                 return '喵帕斯不知道呢~'
         else:
